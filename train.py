@@ -83,10 +83,7 @@ def data_load(data_dir):
 
 def build_model(args, class_to_idx): 
     
-    if "vgg" in args.arch:
-        model = getattr(torchvision.models, args.arch)(pretrained=True)
-    else:
-        model = torchvision.models.resnet50(pretrained=True)
+    model = getattr(torchvision.models, args.arch)(pretrained=True)
     
     for param in model.parameters():
         param.requires_grad = False
